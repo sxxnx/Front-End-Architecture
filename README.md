@@ -1,12 +1,12 @@
 # Du développement à l'architecture Front-End
 
-Le document suivant présente les recommandations en matière de code (HTML, CSS, JS) pour écrire un code réutilisable, propre et facile à maintenir, spécifiquement sous Drupal. (Standards crées dans le cadre de mon travail de Front End Architecte à [Studio Umi](https://www.studio-umi.jp/))
+Le document suivant présente les recommandations en matière de code (HTML, CSS, JS) pour écrire un code réutilisable, propre et facile à maintenir, spécifiquement sous Drupal. (standards crées dans le cadre de mon travail de Front End Architecte à [Studio Umi](https://www.studio-umi.jp/))
 
 Ce document a été traduit du japonais et a été créé avec la collaboration de [Hayato Goto](https://github.com/gh640). Merci GOTO-san :)
 
 **Disclaimer:**
 
-- Les recommandations présentées dans ce document proviennent de réflexions personnelles et sont inspirées par certains développeurs Front End (@see Remerciements en fin de page). Nous sommes ouverts aux suggestions, remarques et questions. N'hésitez pas à me contacter : [Twitter](http://www.twitter.com/c_c_l_) ou même à contribuer :D
+- Les recommandations présentées dans ce document proviennent de réflexions personnelles et sont inspirées par certains développeurs Front End ([Remerciements](#awesome-people) en fin de page). Nous sommes ouverts aux suggestions, remarques et questions. N'hésitez pas à me contacter : [Twitter](http://www.twitter.com/c_c_l_) ou même à contribuer :D
 - Je n'ai jamais travaillé en français donc n'hésitez pas à m'indiquer les erreurs de traduction aussi ;)
 
 ## Table des matières
@@ -100,9 +100,11 @@ Afin de faciliter la compréhension du code, et la facilité à retrouver les fi
 
 #### Noms de classes
 
-- Pour les classes utilisées dans le Layout on utilise le préfixe `l-`; exemple :　`.l-main`  [@see SMACSS Layout rules](https://smacss.com/book/type-layout)  
-- Component (pour les *components* qui sont parents on utilise la/e CamelCase; exemple : `.BlockCalendar` La raison pour laquelle on utilise un système de noms différent pour les *components* qui sont parents et leurs enfants est pour le **name space**, il est plus facile de faire des changements sans aucune incidence sur d'autres éléments. (Voir [BEM](https://en.bem.info/methodology/))
-Pour plus d'informations concernant le choix de la Camel Case : Nicolas Gallagher - [Questioning Best practices - Video](https://www.youtube.com/watch?v=XQWOKBBJ114), [The purification of web development](https://css-tricks.com/w3conf-nicolas-gallagher-questioning-best-practices/), [Undescores in class and ID](https://developer.mozilla.org/en-US/docs/Web/Guide/CSS/Underscores_in_class_and_ID_Names)  
+- Pour les classes utilisées dans le Layout on utilise le préfixe `l-`; exemple :　`.l-main`  [SMACSS Layout rules](https://smacss.com/book/type-layout)  
+- Component (pour les *components* qui sont parents on utilise la/e CamelCase (exemple : `.BlockCalendar`). La raison pour laquelle on utilise un système de noms différents pour les *components* qui sont parents et leurs enfants est pour le **name space**, il est plus facile de faire des changements sans aucune incidence sur d'autres éléments. (Voir aussi [BEM](https://en.bem.info/methodology/))
+  - Pour plus d'informations concernant le choix de la Camel Case : Nicolas Gallagher - [Questioning Best practices - Video](https://www.youtube.com/watch?v=XQWOKBBJ114)
+  - [The purification of web development](https://css-tricks.com/w3conf-nicolas-gallagher-questioning-best-practices/)
+  - [Undescores in class and ID](https://developer.mozilla.org/en-US/docs/Web/Guide/CSS/Underscores_in_class_and_ID_Names)  
 - Pour les components enfants (Elements BEM) on garde les noms conventionnels : `.block-calendar-title`  
 
 #### Variables
@@ -115,7 +117,7 @@ $color-white: #fff;
 $border-white: 1px solid #fff;
 ```
 
-On évite la **SUR SEMATICATIQUE**, les noms de classes doivent être compréhensibles au premier coup d'oeil pour un développeur qui n'a jamais touché votre code auparavant. Il est complètement possible d'utiliser des noms de variables tels que : `color-red`. Cependant il est recommandé pour la compréhension de penser à faire ceci en cas de besoin :
+On évite la **SUR SEMANTIQUE**, les noms de classes doivent être compréhensibles au premier coup d'oeil pour un développeur qui n'a jamais touché votre code auparavant. Il est complètement possible d'utiliser des noms de variables tels que : `color-red`. Cependant il est recommandé pour la compréhension de penser à faire ceci en cas de besoin :
 
 ```
 $color-black: #000;
@@ -129,9 +131,9 @@ $color-base-text: $color-black;
 - border-radius
 - font-family
 - font-size
-- margin/padding (création d'une variable type : `$space-small` avec une valeur en pixel réutilisable)
+- margin/padding (création d'une variable type : `$space-small` avec une valeur réutilisable)
 - indent
-- Variables utilisées dans notre librairie su-mixin
+- *Variables utilisées dans notre librairie su-mixin pour notre cas*
 
 <a name="layout"></a>
 ### Layout
@@ -269,7 +271,7 @@ Layout -> Component -> Element
 - BAD :   
 `nav > ul > li > a {}`   
 
-→ Style non stable, compréhension des conséquences difficiles et non réutilisable
+→ Style non stable, compréhension des conséquences difficile et style non réutilisable
 
 #### Les noms de classes trop généraux
 
