@@ -47,6 +47,7 @@ Afin de faciliter la compréhension du code, et la facilité à retrouver les fi
 3. Base --  `_base.scss`
 4. Layout -- `_layout.scss`
 5. Components (composé des éléments parents et éléments enfants) --  `_component.scss` *possibilité de diviser en plusieurs parties si plus pratique*
+6. Single-style -- `_single-element` *composé d'éléments uniques, non réutilisables*
 6. State -- `_state.scss` *si utilisé*
 7. Thème -- `_theme.scsss` *si utilisé*
 
@@ -61,7 +62,8 @@ Afin de faciliter la compréhension du code, et la facilité à retrouver les fi
 - lib/ → su-mixins.scss (Librairie Umi mixin)
 - sass/
   - base/ → base.scss
-  - components/ → components.scss, components-drupal.scss(pour le style de l'interface admin de Drupal seulement), utility-class.scss（classes réutilisables）
+  - components/ → components.scss, utility-class.scss（classes réutilisables）
+  - single-style/ → components-drupal.scss(pour le style de l'interface admin de Drupal seulement), single-element.scss (éléments au style non-réutilisable)
   - layout/ → layout.scss
   - state/ →　state.scss
 - mixins.scss  
@@ -79,6 +81,7 @@ Afin de faciliter la compréhension du code, et la facilité à retrouver les fi
   - Types de variables
 3. [Layout](#layout)
 4. [Tableau des règles de style](#table-rules)
+  - Single Style
 5. [State](#state)
 6. [Commentaires](#comments)
  - Block
@@ -140,7 +143,7 @@ $color-base-text: $color-black;
 
 #### Séparation entre les components et les éléments du layout
 
-Sur une approche du CSS Orienté Objet, il est important de faire la distinction entre les élements du layout (typiquement la position) et components.
+Sur une approche du CSS Orienté Objet, il est important de faire la distinction entre les éléments du layout (typiquement la position) et components.
 
 Préfixe `l-`  
 
@@ -170,6 +173,12 @@ Layout -> Component -> Element
 - Note: il est possible de faire un layout dans un layout si besoin (exemple : `.l-main-menu` dans `.l-header`)
 - On rajoute des fichiers templates au besoin (Drupal)
 - On ne stylise pas avec des id, car ils/elles surplombent les classes [Measure specifity of ID and classes](https://www.smashingmagazine.com/2007/07/css-specificity-things-you-should-know/#how-to-measure-specificity)
+
+#### Single style
+
+Fichier CSS utilisé pour styliser les éléments non réutilisables et qui sont uniques au projet, tel que le menu principal ou les fils d'Ariane etc... Nous plaçons également les fichiers de style pour l'interface administration de Drupal car ils sont en général uniques et non réutilisés, dans le cas où ils doivent être réutilisés, nous les plaçons dans *components*.
+
+Dans cette situation il n'y a pas d'intérêt à séparer le layout des components car le style n'est pas censé être réutilisé.
 
 <a name="state"></a>
 ### State
@@ -305,13 +314,13 @@ Je tiens à remercier à nouveau [Hayato Goto](https://github.com/gh640) pour av
 - La documentation comporte-t-elle des exemples pertinents ?
 - Les fichiers sont ils suffisamment commentés ?
 - Les commentaires sont ils écrits en une seule et même langue ?
-- Après compilation les commentaires affichés sont ils explicites selon le fichier ? (les commentaires CSS spmt bien affichés et les commentaires SCSS ne le sont pas sur les fichiers CSS)
+- Après compilation les commentaires affichés sont ils explicites selon le fichier ? (les commentaires CSS sont bien affichés et les commentaires SCSS ne le sont pas sur les fichiers CSS)
 - Les références à d'autres fichiers sont elles écrites ? (Pour la maintenance)
 
 ### Styles dans les fichiers
 - Les styles sont ils groupés selon les standards :
   - Le fichier `_base.scss` contient il uniquement des tags HTML ?
-  - Le fichoer `_layout.scss` contient il les classes qui correspondent aux stsndards stipulés plus haut ? (`.l-class`)
+  - Le fichier `_layout.scss` contient il les classes qui correspondent aux standards stipulés plus haut ? (`.l-class`)
 - Les règles générales sont elles respectées ?
   - Le principe de responsabilité unique (SRP) est il respecté ?
   - Le principe de source fiable et unique (SSOT) est il respecté ?
@@ -320,13 +329,13 @@ Je tiens à remercier à nouveau [Hayato Goto](https://github.com/gh640) pour av
 - Les noms de classe respectent ils les normes ? (ex: CamelCase, hyphens etc..)
   - Si les standards ne sont pas respectés, un commentaire explique-t-il la raison ?
 - Les id sont elles évitées pour styliser les éléments ?
-  - Si un(e) id est utilisé(e), um commentaire justifie-t-il le choix ?
+  - Si un(e) id est utilisé(e), un commentaire justifie-t-il le choix ?
 - Les noms de variables respectent ils les standards (anglais compréhensible pour toute nationalité + ordre des mots (typiquement ordre grammatical français (couleur du texte : color-text)))
 - Les classes utilisées pour le js respectent-elles les standards ? ('.js-class')
 - Les classes de JS sont elles uniquement utilisées pour du JS (et non pour styliser les éléments) ?
 
 ### Layout et components
-- Le fichier layout comprant il uniquement des éléments de style pour le positionement (voir Tableau des règles) ?
+- Le fichier layout comprend-il uniquement des éléments de style pour le positionnement (voir Tableau des règles) ?
 - Le layout n'a-t-il aucune incidence sur le style des components et vice versa ?
 - Le style des components n'est il aucunement dépendant de la localisation ? (stylisation en fonction de la page)
 - `margin-top` est il évité ? Si utilisé, le choix est il justifié par un commentaire ?
