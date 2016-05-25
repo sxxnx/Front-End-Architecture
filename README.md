@@ -163,7 +163,9 @@ Préfixe `l-`
 | MARGIN   |   top: X   | x                 | top : x               |
 | PADDING  | o          | o                 | o                     |
 | POSITION | o          | RELATIVE          | x                     |
-| WIDTH    | o          | x                 |max-width/min-width : o|
+| WIDTH    | o          | x                 | Valeur relative       |
+
+*o : OK, x : NON*
 
 Layout -> Component -> Element
 - Le style de layout ne doit pas influer sur les components
