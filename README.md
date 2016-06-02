@@ -243,11 +243,11 @@ Dans cette situation il n'y a pas d'intérêt à séparer le layout des componen
 #### Principe de source fiable et unique / Single source of truth (SSOT)
 
 ```
-<div class="calendar">
-  <h2 class="calendar-header">Calendar</h2>
-</div>
 <div class="blog">  
   <h2 class="blog-header">Blog</h2>
+  <div class="calendar">
+    <h2 class="calendar-header">Calendar</h2>
+  </div>
 </div>
 ```
 ```
