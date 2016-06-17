@@ -185,7 +185,7 @@ Dans cette situation il n'y a pas d'intérêt à séparer le layout des componen
 <a name="state"></a>
 ### State
 
-- On utilise le fichier state pour les classes de Javacript et on sépare les classes JS des classes pour le style ; **.is-state**
+- On utilise le fichier state pour les classes de Javacript et on sépare les classes JS des classes pour le style : **.is-state**
 
 <a name="comments"></a>
 ### Commentaires
@@ -333,7 +333,7 @@ Je tiens à remercier à nouveau [Hayato Goto](https://github.com/gh640) pour av
 - Les id sont elles évitées pour styliser les éléments ?
   - Si un(e) id est utilisé(e), un commentaire justifie-t-il le choix ?
 - Les noms de variables respectent ils les standards (anglais compréhensible pour toute nationalité + ordre des mots (typiquement ordre grammatical français (couleur du texte : color-text)))
-- Les classes utilisées pour le js respectent-elles les standards ? ('.js-class' pour les fichiers *.js* et `.is-state` pour le fichier `state.scss`)
+- Les classes utilisées pour le js respectent-elles les standards ? (`.js-class` pour les fichiers `.js` et `.is-state` pour le fichier `state.scss`)
 - Les classes de JS sont elles uniquement utilisées pour du JS (et non pour styliser les éléments) ?
 
 ### Layout et components
